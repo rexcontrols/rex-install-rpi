@@ -44,4 +44,5 @@ a soft-PLC if you prefer the industrial control terminology. [Learn more...](htt
 - [REX Control System community forum](https://www.rexcontrols.com/forum)  
 
 ## Additional information##
+- More info about the UniPi board can be found at [unipi.technology](http://www.unipi.technology).
 - Raspberry Pi is a trademark of the [Raspberry Pi Foundation](http://www.raspberrypi.org).
