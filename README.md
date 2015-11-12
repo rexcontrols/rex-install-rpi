@@ -33,9 +33,15 @@ a soft-PLC if you prefer the industrial control terminology. [Learn more...](htt
     - `sudo bash install-rex-unipi.sh` (for Raspberry Pi with UniPi extension board)
     - `sudo bash install-rex-pifacedigital.sh` (for Raspberry Pi with PiFace Digital extension board)
 
-- Perform reboot if you are asked for it and you are done!
+- Perform reboot if you are asked for it and you are done.
+- Start programming your Raspberry Pi using the [development tools of the REX Control System](https://www.rexcontrols.com/development-tools)
 
-## Additional information and support ##
-- Visit the [REX Control System community forum](https://www.rexcontrols.com/forum).
+## Documentation and support##
+- [Getting started with REX and Raspberry Pi](http://www.rexcontrols.com/media/DOC/ENGLISH/REX_Getting_Started_RasPi_ENG.pdf)
+- [Getting started with REX and PiFace Digital](http://www.rexcontrols.com/media/DOC/ENGLISH/REX_Getting_Started_RasPi_ENG.pdf)
+- [Getting started with REX and UniPi board](http://www.rexcontrols.com/media/DOC/ENGLISH/REX_Getting_Started_UniPi_ENG.pdf)
 - [Complete documentation of the REX Control System](http://www.rexcontrols.com/documentation-and-support)
+- [REX Control System community forum](https://www.rexcontrols.com/forum)  
+
+## Additional information##
 - Raspberry Pi is a trademark of the [Raspberry Pi Foundation](http://www.raspberrypi.org).
