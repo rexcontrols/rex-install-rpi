@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# REX Control System installer
+# HW specific operations - PiFace Digital
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run this script as root"
+  exit
+fi
+
+#--- PiFace Digital specific operations ---
+cp /boot/config.txt /boot/config.txt.rexbak
+echo 'dtparam=spi=on' >> /boot/config.txt
+
+#--- Final reboot ---
+echo ' '
+echo 'REX for Raspberry Pi with PiFace Digital add-on board was installed.'
+echo ' '
+echo '!!! REBOOT IS REQUIRED !!!'
+echo ' '
+
+read -p "Is it OK to reboot now? [y/N] " -n 1 -r
+echo ' '
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sync
+    reboot
+else
+  echo 'Remember to reboot your Raspberry Pi at your earliest convenience.'
+fi
+echo ' '

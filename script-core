@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# REX Control System installer
+# Runtime components for Raspberry Pi
+
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run this script as root"
+  exit
+fi
+
+if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
+  echo "Raspbian Wheezy detected..."
+else
+  echo "Only Raspbian Wheezy is supported!"
+  exit 9
+fi
+
+echo " "
+echo "This installation script may be used only on a FRESH RASPBIAN WHEEZY IMAGE. Use at your own risk."
+read -p "Is it OK to proceed? [y/N] " -n 1 -r
+echo ' '
+if ! [[ $REPLY =~ ^[Yy]$ ]]
+then
+  echo "Exiting..."
+  exit 9
+fi
+echo ' '
+
+echo 'Adding REX Controls key...'
+
+curl -o /tmp/rex.pub https://www.rexcontrols.cz/media/keys/rex-debian-key.pub
+
+if [ $? -ne 0 ]
+	then echo 'ERROR: Failed to download the REX Controls key! Check your Internet connection...'
+	exit 9
+fi
+
+apt-key add /tmp/rex.pub
+
+if [ $? -ne 0 ]
+	then echo 'ERROR: Failed to add the REX Controls key! Try updating your Raspberry Pi.'
+	exit 9
+fi
+
+echo 'Adding APT source repositories...'
+echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.10/ wheezy contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
+
+apt-get update
+
+echo 'Installing runtime core of the REX Control System...' 
+apt-get install -y rexcore rex-rpidrvt rex-advblkt rex-mbdrvt rex-s7drvt rex-dbdrvt
+
+echo 'Installing HMI-related daemons...'
+apt-get install -y rexwstcp lighttpd lighttpd-mod-websocket
+/usr/sbin/lighty-enable-mod websocket
+/etc/init.d/lighttpd force-reload
