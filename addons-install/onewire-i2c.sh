@@ -38,9 +38,9 @@ apt-get install -y i2c-tools
 echo Installing OWFS \(1-Wire\)...
 apt-get install -y owserver ow-shell rex-owsdrvt
 cp /etc/owfs.conf /etc/owfs.conf.rexbak
-echo '!server: server = localhost:4304' > /etc/owfs.conf
+echo '!server: server = 127.0.0.1:4304' > /etc/owfs.conf
 echo 'allow_other' >> /etc/owfs.conf
-echo 'server: port = localhost:4304' >> /etc/owfs.conf
+echo 'server: port = 127.0.0.1:4304' >> /etc/owfs.conf
 echo 'server: i2c = ALL:ALL' >> /etc/owfs.conf
 echo 'timeout_volatile = 2' >> /etc/owfs.conf
 

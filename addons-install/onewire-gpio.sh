@@ -36,9 +36,9 @@ echo 'dtoverlay=w1-gpio,gpiopin=4,pullup=off' >> /boot/config.txt
 echo Installing OWFS \(1-Wire\)...
 apt-get install -y owserver ow-shell rex-owsdrvt
 cp /etc/owfs.conf /etc/owfs.conf.w1bak
-echo '!server: server = localhost:4304' > /etc/owfs.conf
+echo '!server: server = 127.0.0.1:4304' > /etc/owfs.conf
 echo 'allow_other' >> /etc/owfs.conf
-echo 'server: port = localhost:4304' >> /etc/owfs.conf
+echo 'server: port = 127.0.0.1:4304' >> /etc/owfs.conf
 echo 'server: w1' >> /etc/owfs.conf
 echo 'timeout_volatile = 2' >> /etc/owfs.conf
 
