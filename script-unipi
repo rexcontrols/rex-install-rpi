@@ -13,7 +13,6 @@ echo Enabling I2C bus...
 cp /boot/config.txt /boot/config.txt.rexbak
 echo 'dtparam=i2c=on' >> /boot/config.txt
 echo 'dtparam=i2c_baudrate=400000' >> /boot/config.txt
-echo i2c-dev >> /etc/modules
 apt-get install -y i2c-tools
 
 echo Installing OWFS \(1-Wire\)...
@@ -27,11 +26,8 @@ echo 'timeout_volatile = 2' >> /etc/owfs.conf
 
 echo Enabling the RTC chip...
 RTCINITFNAME="/etc/rexcore/rexcore.env.d/80-rtcunipi.sh"
-echo 'i2c:mcp7941x' >> /etc/modules
+echo 'dtoverlay=i2c-rtc,mcp7941x' >> /boot/config.txt
 echo '#!/bin/bash' > $RTCINITFNAME
-echo '#This is to enable the RTC chip prior to starting the RexCore runtime core.' >> $RTCINITFNAME
-echo 'echo mcp7941x 0x6f > /sys/bus/i2c/devices/i2c-1/new_device' >> $RTCINITFNAME
-echo 'sleep 2' >> $RTCINITFNAME
 echo '#This is to load system time from RTC chip prior to starting the RexCore runtime core.' >> $RTCINITFNAME
 echo 'hwclock --hctosys' >> $RTCINITFNAME
 echo 'service ntp start' >> $RTCINITFNAME 
@@ -39,9 +35,7 @@ chmod +x $RTCINITFNAME
 
 echo Removing fake-hwclock...
 apt-get purge -y fake-hwclock
-rm /etc/cron.hourly/fake-hwclock
 update-rc.d -f fake-hwclock remove
-rm /etc/init.d/fake-hwclock
 apt-get autoremove -y
 
 # Disabling ntp service autostart. It will be started by the RTC initialization script.
