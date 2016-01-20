@@ -8,15 +8,8 @@ if [ "$EUID" -ne 0 ]; then
   exit
 fi
 
-if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
-  echo "Raspbian Wheezy detected..."
-else
-  echo "Only Raspbian Wheezy is supported!"
-  exit 9
-fi
-
 echo " "
-echo "This installation script may be used only on a FRESH RASPBIAN WHEEZY IMAGE. Use at your own risk."
+echo "This installation script may be used only on a FRESH RASPBIAN IMAGE. Use at your own risk."
 read -p "Is it OK to proceed? [y/N] " -n 1 -r
 echo ' '
 if ! [[ $REPLY =~ ^[Yy]$ ]]
@@ -43,7 +36,15 @@ if [ $? -ne 0 ]
 fi
 
 echo 'Adding APT source repositories...'
-echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.10/ wheezy contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
+
+if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
+  echo "Raspbian Wheezy detected..."
+  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.10/ wheezy contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
+else
+  echo "Raspbian Jessie detected..."
+# echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.10/ jessie contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
+  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.10.7-testjessie/ jessie contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
+fi
 
 apt-get update
 
@@ -51,6 +52,15 @@ echo 'Installing runtime core of the REX Control System...'
 apt-get install -y rexcore rex-rpidrvt rex-advblkt rex-mbdrvt rex-s7drvt rex-dbdrvt
 
 echo 'Installing HMI-related daemons...'
-apt-get install -y rexwstcp lighttpd lighttpd-mod-websocket
-/usr/sbin/lighty-enable-mod websocket
-/etc/init.d/lighttpd force-reload
+if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
+  echo "Raspbian Wheezy detected..."
+  apt-get install -y rexwstcp lighttpd lighttpd-mod-websocket
+  /usr/sbin/lighty-enable-mod websocket
+  /etc/init.d/lighttpd force-reload
+else
+  echo "Raspbian Jessie detected..."
+  apt-get install -y rexwstcp lighttpd=1.4.31-103 lighttpd-mod-websocket
+  /usr/sbin/lighty-enable-mod websocket
+  /etc/init.d/lighttpd force-reload
+  systemctl enable lighttpd
+fi
