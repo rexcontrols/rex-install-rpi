@@ -27,11 +27,7 @@ echo 'timeout_volatile = 2' >> /etc/owfs.conf
 
 echo Enabling the RTC chip...
 RTCINITFNAME="/etc/rexcore/rexcore.env.d/80-rtcunipi.sh"
-if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
-  echo 'i2c:mcp7941x' >> /etc/modules
-else
-  echo 'dtoverlay=i2c-rtc,mcp7941x' >> /boot/config.txt
-fi
+echo 'dtoverlay=i2c-rtc,mcp7941x' >> /boot/config.txt
 echo '#!/bin/bash' > $RTCINITFNAME
 if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
   echo '#This is to enable the RTC chip prior to starting the RexCore runtime core.' >> $RTCINITFNAME
