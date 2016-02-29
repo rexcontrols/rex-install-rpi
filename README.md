@@ -13,19 +13,13 @@ a soft-PLC if you prefer the industrial control terminology. [Learn more...](htt
 - On your Raspberry Pi, download the latest revision of installation scripts
 
     ```
-    wget https://github.com/rexcontrols/rex-install-rpi/archive/master.zip
-    ```
-
-- Unzip the installation scripts
-
-    ```
-    unzip master
+    git clone https://github.com/rexcontrols/rex-install-rpi.git
     ```
 
 - Change the working directory
 
     ```
-    cd rex-install-rpi-master
+    cd rex-install-rpi
     ```
 
 - Depending on your hardware, run **only one** of the following installation scripts.
