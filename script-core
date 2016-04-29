@@ -49,4 +49,5 @@ fi
 apt-get update
 
 echo 'Installing runtime core of the REX Control System...' 
-apt-get install -y rexcore rex-rpidrvt rex-advblkt rex-mbdrvt rex-s7drvt rex-dbdrvt
+#apt-get install -y rexcore rex-rpidrvt rex-advblkt rex-mbdrvt rex-s7drvt rex-dbdrvt
+apt-get install -y --force-yes rexcore rex-rpidrvt rex-advblkt rex-mbdrvt rex-s7drvt rex-dbdrvt

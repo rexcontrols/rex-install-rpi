@@ -17,7 +17,8 @@ apt-get install -y i2c-tools
 echo 'i2c-dev' >> /etc/modules
 
 echo Installing OWFS \(1-Wire\)...
-apt-get install -y owserver ow-shell rex-owsdrvt
+apt-get install -y --force-yes owserver ow-shell rex-owsdrvt
+#apt-get install -y owserver ow-shell rex-owsdrvt
 cp /etc/owfs.conf /etc/owfs.conf.rexbak
 echo '!server: server = 127.0.0.1:4304' > /etc/owfs.conf
 echo 'allow_other' >> /etc/owfs.conf
@@ -25,16 +26,19 @@ echo 'server: port = 127.0.0.1:4304' >> /etc/owfs.conf
 echo 'server: i2c = ALL:ALL' >> /etc/owfs.conf
 echo 'timeout_volatile = 2' >> /etc/owfs.conf
 
+# pro RTC by pry melo stacit nasledujici, viz http://www.unipi.technology/forum/viewtopic.php?t=237
+sed -i '/^if \[ -e \/run\/systemd\/system/,/^fi/s/^/#/'  /lib/udev/hwclock-set
+
 echo Enabling the RTC chip...
 RTCINITFNAME="/etc/rexcore/rexcore.env.d/80-rtcunipi.sh"
 echo 'dtoverlay=i2c-rtc,mcp7941x' >> /boot/config.txt
 echo '#!/bin/bash' > $RTCINITFNAME
 echo '#This is to enable the RTC chip prior to starting the RexCore runtime core.' >> $RTCINITFNAME
-echo 'echo mcp7941x 0x6f > /sys/bus/i2c/devices/i2c-1/new_device' >> $RTCINITFNAME
-echo 'sleep 2' >> $RTCINITFNAME
-echo '#This is to load system time from RTC chip prior to starting the RexCore runtime core.' >> $RTCINITFNAME
-echo 'hwclock --hctosys' >> $RTCINITFNAME
-echo 'service ntp start' >> $RTCINITFNAME 
+#echo 'echo mcp7941x 0x6f > /sys/bus/i2c/devices/i2c-1/new_device' >> $RTCINITFNAME
+#echo 'sleep 2' >> $RTCINITFNAME
+#echo '#This is to load system time from RTC chip prior to starting the RexCore runtime core.' >> $RTCINITFNAME
+#echo 'hwclock --hctosys' >> $RTCINITFNAME
+#echo 'service ntp start' >> $RTCINITFNAME 
 chmod +x $RTCINITFNAME
 
 echo Removing fake-hwclock...
@@ -48,7 +52,7 @@ if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
 fi
 
 # Disabling ntp service autostart. It is started by the RTC initialization script.
-update-rc.d ntp disable
+#update-rc.d ntp disable
 
 echo ' '
 echo 'REX for Raspberry Pi with UniPi add-on board was installed.'
