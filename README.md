@@ -10,7 +10,19 @@ on your Raspberry Pi minicomputer you turn it into a universal control unit. Or
 a soft-PLC if you prefer the industrial control terminology. [Learn more...](https://www.rexcontrols.com/rex)
 
 ## Installation instructions ##
-- On your Raspberry Pi, download the latest revision of installation scripts
+- On your Raspberry Pi, install GIT
+
+    ```
+    sudo apt install git
+    ```
+
+- Go to your home directory
+
+    ```
+    cd ~
+    ```
+
+- Download the latest revision of installation scripts
 
     ```
     git clone https://github.com/rexcontrols/rex-install-rpi.git
