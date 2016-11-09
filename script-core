@@ -39,15 +39,13 @@ echo 'Adding APT source repositories...'
 
 if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
   echo "Raspbian Wheezy detected..."
-  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.11/ wheezy contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
+  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.50/ wheezy contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
 else
   echo "Raspbian Jessie detected..."
-# echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.11/ jessie contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
-  echo 'deb ftp://lab.fav.zcu.cz/rex/repositories/2.11/debian/ jessie contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
+  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.50/ jessie contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
 fi
 
 apt-get update
 
 echo 'Installing runtime core of the REX Control System...' 
-#apt-get install -y rexcore rex-rpidrvt rex-advblkt rex-mbdrvt rex-s7drvt rex-dbdrvt
-apt-get install -y --force-yes rexcore rex-rpidrvt rex-advblkt rex-mbdrvt rex-s7drvt rex-dbdrvt
+apt-get install -y rexcore rex-advblkt rex-webfiles rex-dochtml rex-docpdf rex-rpidrvt rex-mbdrvt rex-s7drvt rex-dbdrvt
