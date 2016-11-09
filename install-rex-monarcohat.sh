@@ -46,7 +46,7 @@ kernelget() {
     return 1
 }
 
-if kernelget 3.18.5; then
+if kernelget 4.4.11; then
   echo "Up to date kernel found..."
 else
   echo "Obsolete kernel found. Please upgrade or install REX manually."
