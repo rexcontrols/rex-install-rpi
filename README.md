@@ -25,7 +25,7 @@ a soft-PLC if you prefer the industrial control terminology. [Learn more...](htt
 - Download the latest revision of installation scripts
 
     ```
-    git clone https://github.com/rexcontrols/rex-install-rpi.git
+    git clone https://github.com/rexcontrols/rex-install-rpi.git --branch v2.50
     ```
 
 - Change the working directory
