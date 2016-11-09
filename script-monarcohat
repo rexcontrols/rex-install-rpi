@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# REX Control System installer
+# HW specific operations - Monarco HAT
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run this script as root"
+  exit
+fi
+
+#--- Monarco HAT specific operations ---
+
+#disabling serial console
+sed 's/ console=serial0,[0-9]\+//' -i /boot/cmdline.txt
+
+#avoiding w1 kernel module occupying the DS2482 1-Wire master
+echo "blacklist ds2482" > /etc/modprobe.d/rex-ds2482.conf
+
+#setting and enabling I2C
+echo 'dtparam=i2c_baudrate=400000' >> /boot/config.txt
+echo "i2c-dev" > /etc/modules-load.d/i2cdev.conf
+
+#enabling RTC clock
+
+apt --yes purge fake-hwclock
+
+service ntp stop
+ntpd -gq
+hwclock -w || true
+hwclock -r || true
+
+# Disabling ntp service autostart. Instead it will be started by the RTC initialization script.
+update-rc.d ntp disable
+
+RTCINITFILE="/etc/rexcore/rexcore.env.d/80-rtc-monarco.sh"
+echo '#This is to load system time from RTC chip prior to starting the RexCore runtime core.' > $RTCINITFILE
+echo 'hwclock --hctosys' >> $RTCINITFILE
+echo 'service ntp start' >> $RTCINITFILE 
+chmod a+x $RTCINITFILE
+
+echo Installing OWFS \(1-Wire\)...
+apt-get install -y ow-shell
+cp /etc/owfs.conf /etc/owfs.conf.rexbak
+echo '!server: server = localhost:4304' > /etc/owfs.conf
+echo 'allow_other' >> /etc/owfs.conf
+echo 'server: port = localhost:4304' >> /etc/owfs.conf
+echo 'server: i2c = ALL:ALL' >> /etc/owfs.conf
+echo 'timeout_volatile = 2' >> /etc/owfs.conf
+
+echo ' '
+echo 'REX for Raspberry Pi with Monarco HAT was installed.'
+echo ' '
+echo '!!! REBOOT IS REQUIRED !!!'
+echo ' '
+
+read -p "Is it OK to reboot now? [y/N] " -n 1 -r
+echo ' '
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    reboot
+else
+  echo 'Remember to reboot your Raspberry Pi at your earliest convenience.'
+fi
+echo ' '
