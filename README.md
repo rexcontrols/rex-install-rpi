@@ -36,6 +36,7 @@ a soft-PLC if you prefer the industrial control terminology. [Learn more...](htt
 
 - Depending on your hardware, run **only one** of the following installation scripts.
     - `sudo bash install-rex.sh` (for bare Raspberry Pi)
+    - `sudo bash install-rex-monarcohat.sh` (for Raspberry Pi with the Monarco HAT)
     - `sudo bash install-rex-unipi.sh` (for Raspberry Pi with UniPi extension board)
     - `sudo bash install-rex-pifacedigital.sh` (for Raspberry Pi with PiFace Digital extension board)
 
@@ -43,12 +44,13 @@ a soft-PLC if you prefer the industrial control terminology. [Learn more...](htt
 - Start programming your Raspberry Pi using the [development tools of the REX Control System](https://www.rexcontrols.com/development-tools)
 
 ## Documentation and support##
-- [Getting started with REX and Raspberry Pi](http://www.rexcontrols.com/media/DOC/ENGLISH/REX_Getting_Started_RasPi_ENG.pdf)
-- [Getting started with REX and PiFace Digital](http://www.rexcontrols.com/media/DOC/ENGLISH/REX_Getting_Started_RasPi_ENG.pdf)
-- [Getting started with REX and UniPi board](http://www.rexcontrols.com/media/DOC/ENGLISH/REX_Getting_Started_UniPi_ENG.pdf)
-- [Complete documentation of the REX Control System](http://www.rexcontrols.com/documentation-and-support)
+- [Getting started with REX and Raspberry Pi](https://www.rexcontrols.com/media/2.50.1/doc/PDF/ENGLISH/RexGettingStarted_RasPi_ENG.pdf)
+- [Getting started with REX and Monarco HAT](https://www.rexcontrols.com/media/2.50.1/doc/PDF/ENGLISH/RexGettingStarted_MonarcoHAT_RPi_ENG.pdf)
+- [Getting started with REX and UniPi board](https://www.rexcontrols.com/media/2.50.1/doc/PDF/ENGLISH/RexGettingStarted_UniPi_ENG.pdf)
+- [Complete documentation of the REX Control System](https://www.rexcontrols.com/documentation-and-support)
 - [REX Control System community forum](https://www.rexcontrols.com/forum)  
 
 ## Additional information##
-- More info about the UniPi board can be found at [unipi.technology](http://www.unipi.technology).
+- More information about the Monarco HAT can be found at [monarco.io](http://www.monarco.io).
+- More information about the UniPi board can be found at [unipi.technology](http://www.unipi.technology).
 - Raspberry Pi is a trademark of the [Raspberry Pi Foundation](http://www.raspberrypi.org).
