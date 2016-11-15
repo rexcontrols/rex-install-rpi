@@ -39,10 +39,10 @@ echo 'Adding APT source repositories...'
 
 if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
   echo "Raspbian Wheezy detected..."
-  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.10/ wheezy contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
+  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.10/ wheezy contrib non-free' > /etc/apt/sources.list.d/rexcontrols.list
 else
   echo "Raspbian Jessie detected..."
-  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.10/ jessie contrib non-free' >> /etc/apt/sources.list.d/rexcontrols.list
+  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.10/ jessie contrib non-free' > /etc/apt/sources.list.d/rexcontrols.list
 fi
 
 apt-get update
