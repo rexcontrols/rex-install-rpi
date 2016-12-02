@@ -10,7 +10,8 @@ fi
 
 #--- Monarco HAT specific operations ---
 
-#disabling serial console
+#disabling serial console, UART is used for RS485
+cp /boot/cmdline.txt /boot/cmdline.txt.rexbak
 sed 's/ console=serial0,[0-9]\+//' -i /boot/cmdline.txt
 
 #avoiding w1 kernel module occupying the DS2482 1-Wire master
@@ -39,7 +40,7 @@ echo 'service ntp start' >> $RTCINITFILE
 chmod a+x $RTCINITFILE
 
 echo Installing OWFS \(1-Wire\)...
-apt-get install -y ow-shell
+apt-get install -y owserver rex-owsdrvt ow-shell
 cp /etc/owfs.conf /etc/owfs.conf.rexbak
 echo '!server: server = localhost:4304' > /etc/owfs.conf
 echo 'allow_other' >> /etc/owfs.conf
