@@ -13,6 +13,7 @@ a soft-PLC if you prefer the industrial control terminology. [Learn more...](htt
 - On your Raspberry Pi, install GIT
 
     ```
+    sudo apt update
     sudo apt install git
     ```
 
