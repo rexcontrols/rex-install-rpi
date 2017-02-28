@@ -11,14 +11,12 @@ if [ "$EUID" -ne 0 ]
 fi
 
 if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
-  echo "Raspbian Wheezy detected..."
-else
-  echo "Only Raspbian Wheezy is supported!"
+  echo "Raspbian Wheezy not supported, please upgrade your system..."
   exit
 fi
 
 echo " "
-echo "This installation script may be used only on a FRESH RASPBIAN WHEEZY IMAGE. Use at your own risk."
+echo "This installation script may be used only on a FRESH RASPBIAN JESSIE IMAGE. Use at your own risk."
 read -p "Is it OK to proceed? [y/N] " -n 1 -r
 echo ' '
 if ! [[ $REPLY =~ ^[Yy]$ ]]
@@ -38,14 +36,14 @@ apt-get install -y i2c-tools
 echo Installing OWFS \(1-Wire\)...
 apt-get install -y owserver ow-shell rex-owsdrvt
 cp /etc/owfs.conf /etc/owfs.conf.rexbak
-echo '!server: server = 127.0.0.1:4304' > /etc/owfs.conf
+echo '!server: server = localhost:4304' > /etc/owfs.conf
 echo 'allow_other' >> /etc/owfs.conf
-echo 'server: port = 127.0.0.1:4304' >> /etc/owfs.conf
+echo 'server: port = localhost:4304' >> /etc/owfs.conf
 echo 'server: i2c = ALL:ALL' >> /etc/owfs.conf
 echo 'timeout_volatile = 2' >> /etc/owfs.conf
 
 echo ' '
-echo '1-Wire temperature sensors connected to GPIO#4 will be available upon reboot.'
+echo '1-Wire devices connected to the 1-Wire gateway will be available upon reboot.'
 echo ' '
 echo '!!! REBOOT IS REQUIRED !!!'
 echo ' '

@@ -27,12 +27,6 @@ on your project. These packages are optional, install them only if necessary.
         sudo bash onewire-i2c.sh
         ```
 
-    - If you need to exchange data with MySQL database, run
-
-        ```
-        sudo bash odbc-mysql.sh
-        ```
-
 ## Documentation and support##
 - [Complete documentation of the REX Control System](http://www.rexcontrols.com/documentation-and-support)
 - [REX Control System community forum](https://www.rexcontrols.com/forum)  
