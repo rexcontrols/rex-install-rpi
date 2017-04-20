@@ -44,14 +44,14 @@ a soft-PLC if you prefer the industrial control terminology. [Learn more...](htt
 - Perform reboot if you are asked for it and you are done.
 - Start programming your Raspberry Pi using the [development tools of the REX Control System](https://www.rexcontrols.com/development-tools)
 
-## Documentation and support##
+## Documentation and support ##
 - [Getting started with REX and Raspberry Pi](https://www.rexcontrols.com/media/2.50.1/doc/PDF/ENGLISH/RexGettingStarted_RasPi_ENG.pdf)
 - [Getting started with REX and Monarco HAT](https://www.rexcontrols.com/media/2.50.1/doc/PDF/ENGLISH/RexGettingStarted_MonarcoHAT_RPi_ENG.pdf)
 - [Getting started with REX and UniPi board](https://www.rexcontrols.com/media/2.50.1/doc/PDF/ENGLISH/RexGettingStarted_UniPi_ENG.pdf)
 - [Complete documentation of the REX Control System](https://www.rexcontrols.com/documentation-and-support)
 - [REX Control System community forum](https://www.rexcontrols.com/forum)  
 
-## Additional information##
+## Additional information ##
 - More information about the Monarco HAT can be found at [monarco.io](http://www.monarco.io).
 - More information about the UniPi board can be found at [unipi.technology](http://www.unipi.technology).
 - Raspberry Pi is a trademark of the [Raspberry Pi Foundation](http://www.raspberrypi.org).
