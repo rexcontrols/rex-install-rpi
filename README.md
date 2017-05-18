@@ -6,11 +6,12 @@ software products for automation projects. You can use it in all fields of
 automation, robotics, measurements and feedback control.
 
 By installing runtime modules of the [REX Control System](https://www.rexcontrols.com/rex)
-on your Raspberry Pi minicomputer you turn it into a universal control unit. Or
-a soft-PLC if you prefer the industrial control terminology. [Learn more...](https://www.rexcontrols.com/rex)
+on your Raspberry Pi minicomputer you turn it into a universal programmable 
+automation unit. Or a soft-PLC if you prefer the industrial automation 
+terminology. [Learn more...](https://www.rexcontrols.com/rex)
 
 ## Installation instructions ##
-- On your Raspberry Pi, install GIT
+- On your Raspberry Pi, install the Git version control tool
 
     ```
     sudo apt update
