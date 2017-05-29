@@ -10,7 +10,9 @@ fi
 
 #--- PiFace Digital specific operations ---
 cp /boot/config.txt /boot/config.txt.rexbak
-echo 'dtparam=spi=on' >> /boot/config.txt
+if ! grep -q '^dtparam=spi=on' /boot/config.txt
+    then echo 'dtparam=spi=on' >> /boot/config.txt
+fi
 
 #--- Final reboot ---
 echo ' '

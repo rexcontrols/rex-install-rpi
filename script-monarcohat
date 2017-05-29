@@ -18,8 +18,11 @@ sed 's/ console=serial0,[0-9]\+//' -i /boot/cmdline.txt
 echo "blacklist ds2482" > /etc/modprobe.d/rex-ds2482.conf
 
 #setting and enabling I2C
-echo 'dtparam=i2c_baudrate=400000' >> /boot/config.txt
+if ! grep -q '^dtparam=i2c_baudrate=400000' /boot/config.txt
+    then echo 'dtparam=i2c_baudrate=400000' >> /boot/config.txt
+fi
 echo "i2c-dev" > /etc/modules-load.d/i2cdev.conf
+apt-get install -y i2c-tools
 
 #enabling RTC clock
 

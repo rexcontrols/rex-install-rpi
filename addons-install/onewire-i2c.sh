@@ -29,8 +29,10 @@ echo ' '
 #--- Installation ---
 echo Enabling I2C bus...
 cp /boot/config.txt /boot/config.txt.rexbak
-echo 'dtparam=i2c=on' >> /boot/config.txt
-echo i2c-dev >> /etc/modules
+if ! grep -q '^dtparam=i2c_arm=on' /boot/config.txt
+    then echo 'dtparam=i2c_arm=on' >> /boot/config.txt
+fi
+echo "i2c-dev" > /etc/modules-load.d/i2cdev.conf
 apt-get install -y i2c-tools
 
 echo Installing OWFS \(1-Wire\)...
