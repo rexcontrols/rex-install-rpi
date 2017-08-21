@@ -17,7 +17,6 @@ elif cat /etc/*-release | grep VERSION= | grep -iq Jessie; then
   DISTRO="Jessie"
 else
   DISTRO="Stretch"
-  echo "Raspbian $DISTRO detected..."
 fi
 echo "Raspbian $DISTRO detected..."
 
@@ -51,7 +50,7 @@ fi
 
 echo 'Adding APT source repositories...'
 
-if [ "$DISTRO" = "Jessie"] 
+if [ "$DISTRO" = "Jessie" ] 
 then
   echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.50/ jessie non-free' > /etc/apt/sources.list.d/rexcontrols.list
 else
