@@ -8,8 +8,21 @@ if [ "$EUID" -ne 0 ]; then
   exit
 fi
 
+# Checking Raspbian distribution...
+
+if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
+  echo "Raspbian Wheezy not supported, please upgrade your system..."
+  exit 9
+elif cat /etc/*-release | grep VERSION= | grep -iq Jessie; then
+  DISTRO="Jessie"
+else
+  DISTRO="Stretch"
+  echo "Raspbian $DISTRO detected..."
+fi
+echo "Raspbian $DISTRO detected..."
+
 echo " "
-echo "This installation script may be used only on a FRESH RASPBIAN JESSIE IMAGE."
+echo "This installation script may be used only on a FRESH RASPBIAN $DISTRO IMAGE."
 echo "Use at your own risk."
 read -p "Is it OK to proceed? [y/N] " -n 1 -r
 echo ' '
@@ -38,13 +51,12 @@ fi
 
 echo 'Adding APT source repositories...'
 
-if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
-  echo "Raspbian Wheezy not supported, please upgrade your system..."
-  exit 9
-else
-  echo "Raspbian Jessie detected..."
+if [ "$DISTRO" = "Jessie"] 
+then
   echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.50/ jessie non-free' > /etc/apt/sources.list.d/rexcontrols.list
-fi
+else
+  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.50/ stretch non-free' > /etc/apt/sources.list.d/rexcontrols.list
+fi  
 
 apt-get update
 
