@@ -1,6 +1,6 @@
 #!/bin/bash
 echo ' '
-echo '  Enabling 1-Wire gateway connected via the I2C bus  '
+echo '  Enabling 1-Wire gateway connected via the USB bus  '
 echo '            (Raspberry Pi minicomputer)              '
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo ' '
@@ -35,21 +35,13 @@ fi
 echo ' '
 
 #--- Installation ---
-echo Enabling I2C bus...
-cp /boot/config.txt /boot/config.txt.rexbak
-if ! grep -q '^dtparam=i2c_arm=on' /boot/config.txt
-    then echo 'dtparam=i2c_arm=on' >> /boot/config.txt
-fi
-echo "i2c-dev" > /etc/modules-load.d/i2cdev.conf
-apt-get install -y i2c-tools
-
 echo Installing OWFS \(1-Wire\)...
 apt-get install -y owserver ow-shell rex-owsdrvt
 cp /etc/owfs.conf /etc/owfs.conf.rexbak
 echo '!server: server = localhost:4304' > /etc/owfs.conf
 echo 'allow_other' >> /etc/owfs.conf
 echo 'server: port = localhost:4304' >> /etc/owfs.conf
-echo 'server: i2c = ALL:ALL' >> /etc/owfs.conf
+echo 'server: usb = all' >> /etc/owfs.conf
 echo 'timeout_volatile = 2' >> /etc/owfs.conf
 
 echo ' '
