@@ -1,8 +1,8 @@
 #!/bin/bash
 echo ' '
-echo 'Installer of the REX Control System runtime components'
-echo '        for Raspberry Pi with UniPi board             '
-echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+echo 'Installer of REXYGEN runtime components'
+echo '   for Raspberry Pi with UniPi board   '
+echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo ' '
 
 ROOT=$(dirname $(readlink -f $0))
@@ -49,7 +49,7 @@ kernelget() {
 if kernelget 3.18.5; then
   echo "Up to date kernel found..."
 else
-  echo "Obsolete kernel found. Please upgrade or install REX manually."
+  echo "Obsolete kernel found. Please upgrade or install REXYGEN manually."
   exit
 fi
 

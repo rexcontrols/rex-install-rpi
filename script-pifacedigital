@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# REX Control System installer
+# REXYGEN installer
 # HW specific operations - PiFace Digital
 
 if [ "$EUID" -ne 0 ]
@@ -16,7 +16,7 @@ fi
 
 #--- Final reboot ---
 echo ' '
-echo 'REX for Raspberry Pi with PiFace Digital add-on board was installed.'
+echo 'REXYGEN for Raspberry Pi with PiFace Digital add-on board was installed.'
 echo ' '
 echo '!!! REBOOT IS REQUIRED !!!'
 echo ' '

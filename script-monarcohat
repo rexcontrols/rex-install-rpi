@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# REX Control System installer
+# REXYGEN installer
 # HW specific operations - Monarco HAT
 
 if [ "$EUID" -ne 0 ]
@@ -52,7 +52,7 @@ echo 'server: i2c = ALL:ALL' >> /etc/owfs.conf
 echo 'timeout_volatile = 2' >> /etc/owfs.conf
 
 echo ' '
-echo 'REX for Raspberry Pi with Monarco HAT was installed.'
+echo 'REXYGEN for Raspberry Pi with Monarco HAT was installed.'
 echo ' '
 echo '!!! REBOOT IS REQUIRED !!!'
 echo ' '

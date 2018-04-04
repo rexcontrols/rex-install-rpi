@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# REX Control System installer
+# REXYGEN installer
 # HW specific operations - UniPi
 
 if [ "$EUID" -ne 0 ]
@@ -41,7 +41,7 @@ update-rc.d -f fake-hwclock remove
 apt-get autoremove -y
 
 echo ' '
-echo 'REX for Raspberry Pi with UniPi add-on board was installed.'
+echo 'REXYGEN for Raspberry Pi with UniPi add-on board was installed.'
 echo ' '
 echo '!!! REBOOT IS REQUIRED !!!'
 echo ' '

@@ -1,8 +1,8 @@
 #!/bin/bash
 echo ' '
-echo 'Installer of the REX Control System runtime components'
-echo '        for the Raspberry Pi minicomputer             '
-echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+echo 'Installer of REXYGEN runtime components'
+echo '  for the Raspberry Pi minicomputer    '
+echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo ' '
 
 ROOT=$(dirname $(readlink -f $0))

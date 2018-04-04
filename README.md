@@ -1,14 +1,14 @@
-Installing the REX Control System runtime modules on Raspberry Pi
-=================================================================
+Installing REXYGEN runtime modules on Raspberry Pi
+==================================================
 
-The [REX Control System](https://www.rexcontrols.com/rex) is a family of
+[REXYGEN](https://www.rexygen.com) is a family of
 software products for automation projects. You can use it in all fields of
 automation, robotics, measurements and feedback control.
 
-By installing runtime modules of the [REX Control System](https://www.rexcontrols.com/rex)
+By installing runtime modules of [REXYGEN](https://www.rexygen.com)
 on your Raspberry Pi minicomputer you turn it into a universal programmable 
 automation unit. Or a soft-PLC if you prefer the industrial automation 
-terminology. [Learn more...](https://www.rexcontrols.com/rex)
+terminology. [Learn more...](https://www.rexygen.com)
 
 ## Installation instructions ##
 - On your Raspberry Pi, install the Git version control tool
@@ -43,14 +43,14 @@ terminology. [Learn more...](https://www.rexcontrols.com/rex)
     - `sudo bash install-rex-pifacedigital.sh` (for Raspberry Pi with PiFace Digital extension board)
 
 - Perform reboot if you are asked for it and you are done.
-- Start programming your Raspberry Pi using the [development tools of the REX Control System](https://www.rexcontrols.com/development-tools)
+- Start programming your Raspberry Pi using the [REXYGEN Studio](https://www.rexygen.com/rexygen-studio/)
 
 ## Documentation and support ##
-- [Getting started with REX and Raspberry Pi](https://www.rexcontrols.com/media/2.50.1/doc/PDF/ENGLISH/RexGettingStarted_RasPi_ENG.pdf)
-- [Getting started with REX and Monarco HAT](https://www.rexcontrols.com/media/2.50.1/doc/PDF/ENGLISH/RexGettingStarted_MonarcoHAT_RPi_ENG.pdf)
-- [Getting started with REX and UniPi board](https://www.rexcontrols.com/media/2.50.1/doc/PDF/ENGLISH/RexGettingStarted_UniPi_ENG.pdf)
-- [Complete documentation of the REX Control System](https://www.rexcontrols.com/documentation-and-support)
-- [REX Control System community forum](https://www.rexcontrols.com/forum)  
+- [Getting started with REXYGEN and Raspberry Pi](https://www.rexygen.com/doc/ENGLISH/MANUALS/RexygenGettingStarted_RasPi/RexygenGettingStarted_RasPi_ENG.html)
+- [Getting started with REXYGEN and Monarco HAT](https://www.rexygen.com/doc/ENGLISH/MANUALS/RexygenGettingStarted_MonarcoHAT_RPi/RexygenGettingStarted_MonarcoHAT_RPi_ENG.html)
+- [Getting started with REXYGEN and UniPi board](https://www.rexygen.com/doc/ENGLISH/MANUALS/RexygenGettingStarted_UniPi/RexygenGettingStarted_UniPi_ENG.html)
+- [Complete documentation of REXYGEN](https://www.rexygen.com/documentation-and-support/)
+- [REXYGEN community forum](https://www.rexcontrols.com/forum)  
 
 ## Additional information ##
 - More information about the Monarco HAT can be found at [monarco.io](http://www.monarco.io).
