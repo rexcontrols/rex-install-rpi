@@ -34,7 +34,7 @@ echo ' '
 
 echo 'Adding REX Controls key...'
 
-curl -o /tmp/rex.pub https://www.rexcontrols.cz/media/keys/rex-debian-key.pub
+curl -o /tmp/rex.pub http://download.rexcontrols.cz/files/key/rex-debian-key.pub
 
 if [ $? -ne 0 ]
 	then echo 'ERROR: Failed to download the REX Controls key! Check your Internet connection...'
