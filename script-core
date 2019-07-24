@@ -14,9 +14,12 @@ if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
   echo "Raspbian Wheezy not supported, please upgrade your system..."
   exit 9
 elif cat /etc/*-release | grep VERSION= | grep -iq Jessie; then
-  DISTRO="Jessie"
-else
+  echo "Raspbian Jessie not supported, please upgrade your system..."
+  exit 9
+elif cat /etc/*-release | grep VERSION= | grep -iq Stretch; then
   DISTRO="Stretch"
+else
+  DISTRO="Buster"
 fi
 echo "Raspbian $DISTRO detected..."
 
@@ -53,11 +56,22 @@ echo 'Adding APT source repositories...'
 if [ "$DISTRO" = "Jessie" ] 
 then
   echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.50/ jessie non-free' > /etc/apt/sources.list.d/rexcontrols.list
+elif [ "$DISTRO" = "Stretch" ]
+then
+  echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.50/ stretch non-free' > /etc/apt/sources.list.d/rexcontrols.list
 else
   echo 'deb http://download.rexcontrols.cz/repositories/debian-rex-2.50/ stretch non-free' > /etc/apt/sources.list.d/rexcontrols.list
 fi  
 
-apt-get update
+apt update
+
+### temporary hack to overcome post-installation problems of owserver (OWFS) in Buster
+if [ "$DISTRO" = "Buster" ] 
+then
+    apt install -y --install-recommends owserver
+    dpkg --configure -a
+fi
+### end of hack
 
 echo 'Installing runtime modules of REXYGEN...' 
-apt-get install -y --install-recommends rexygen-runtime
+apt install -y --install-recommends rexygen-runtime

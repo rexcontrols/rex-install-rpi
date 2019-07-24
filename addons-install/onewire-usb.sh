@@ -16,14 +16,17 @@ if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
   echo "Raspbian Wheezy not supported, please upgrade your system..."
   exit 9
 elif cat /etc/*-release | grep VERSION= | grep -iq Jessie; then
-  DISTRO="Jessie"
-else
+  echo "Raspbian Jessie not supported, please upgrade your system..."
+  exit 9
+elif cat /etc/*-release | grep VERSION= | grep -iq Stretch; then
   DISTRO="Stretch"
+else
+  DISTRO="Buster"
 fi
 echo "Raspbian $DISTRO detected..."
 
 echo " "
-echo "This installation script may be used only on a FRESH RASPBIAN $DISTRO IMAGE."
+echo "This installation script may be used only on a FRESH RASPBIAN $DISTRO IMAGE. Use at your own risk."
 echo "Use at your own risk."
 read -p "Is it OK to proceed? [y/N] " -n 1 -r
 echo ' '

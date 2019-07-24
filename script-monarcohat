@@ -22,28 +22,15 @@ if ! grep -q '^dtparam=i2c_baudrate=400000' /boot/config.txt
     then echo 'dtparam=i2c_baudrate=400000' >> /boot/config.txt
 fi
 echo "i2c-dev" > /etc/modules-load.d/i2cdev.conf
-apt-get install -y i2c-tools
+apt install -y i2c-tools
 
-#enabling RTC clock
-
-apt --yes purge fake-hwclock
-
-service ntp stop
-ntpd -gq
-hwclock -w || true
-hwclock -r || true
-
-# Disabling ntp service autostart. Instead it will be started by the RTC initialization script.
-update-rc.d ntp disable
-
-RTCINITFILE="/etc/rexcore/rexcore.env.d/80-rtc-monarco.sh"
-echo '#This is to load system time from RTC chip prior to starting the RexCore runtime core.' > $RTCINITFILE
-echo 'hwclock --hctosys' >> $RTCINITFILE
-echo 'service ntp start' >> $RTCINITFILE 
-chmod a+x $RTCINITFILE
+echo Removing fake-hwclock...
+apt purge -y fake-hwclock
+update-rc.d -f fake-hwclock remove
+apt autoremove -y
 
 echo Installing OWFS \(1-Wire\)...
-apt-get install -y owserver rex-owsdrvt ow-shell
+apt install -y owserver rex-owsdrvt ow-shell
 cp /etc/owfs.conf /etc/owfs.conf.rexbak
 echo '!server: server = localhost:4304' > /etc/owfs.conf
 echo 'allow_other' >> /etc/owfs.conf

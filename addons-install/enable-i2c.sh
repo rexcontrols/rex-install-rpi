@@ -15,9 +15,12 @@ if cat /etc/*-release | grep VERSION= | grep -iq Wheezy; then
   echo "Raspbian Wheezy not supported, please upgrade your system..."
   exit 9
 elif cat /etc/*-release | grep VERSION= | grep -iq Jessie; then
-  DISTRO="Jessie"
-else
+  echo "Raspbian Jessie not supported, please upgrade your system..."
+  exit 9
+elif cat /etc/*-release | grep VERSION= | grep -iq Stretch; then
   DISTRO="Stretch"
+else
+  DISTRO="Buster"
 fi
 echo "Raspbian $DISTRO detected..."
 
