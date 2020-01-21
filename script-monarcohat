@@ -12,7 +12,7 @@ fi
 
 #disabling serial console, UART is used for RS485
 cp /boot/cmdline.txt /boot/cmdline.txt.rexbak
-sed 's/ console=serial0,[0-9]\+//' -i /boot/cmdline.txt
+sed 's/console=serial0,[0-9]\+//' -i /boot/cmdline.txt
 
 #avoiding w1 kernel module occupying the DS2482 1-Wire master
 echo "blacklist ds2482" > /etc/modprobe.d/rex-ds2482.conf
