@@ -50,7 +50,7 @@ terminology. [Learn more...](https://www.rexygen.com)
 - [Getting started with REXYGEN and Monarco HAT](https://www.rexygen.com/doc/ENGLISH/MANUALS/RexygenGettingStarted_MonarcoHAT_RPi/RexygenGettingStarted_MonarcoHAT_RPi_ENG.html)
 - [Getting started with REXYGEN and UniPi board](https://www.rexygen.com/doc/ENGLISH/MANUALS/RexygenGettingStarted_UniPi/RexygenGettingStarted_UniPi_ENG.html)
 - [Complete documentation of REXYGEN](https://www.rexygen.com/documentation-and-support/)
-- [REXYGEN community forum](https://www.rexcontrols.com/forum)  
+- [REXYGEN community forum](https://forum.rexygen.com)  
 
 ## Additional information ##
 - More information about the Monarco HAT can be found at [monarco.io](http://www.monarco.io).
