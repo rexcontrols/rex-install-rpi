@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# REXYGEN installer
+# final script
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run this script as root"
+  exit
+fi
+
+echo ' '
+echo 'Runtime modules of REXYGEN for Raspberry Pi were successfully installed.'
+echo 'You can now program your Raspberry Pi using REXYGEN Studio.'
+echo ' '
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "The IP address of this device is %s\n" "$_IP"
+fi
+echo ' '

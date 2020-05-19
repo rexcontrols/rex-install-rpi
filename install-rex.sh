@@ -15,4 +15,7 @@ fi
 # Install core modules
 bash $ROOT/script-core
 
+# Final touch
+bash $ROOT/script-plain
+
 # Done

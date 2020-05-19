@@ -16,16 +16,23 @@ fi
 
 #--- Final reboot ---
 echo ' '
-echo 'REXYGEN for Raspberry Pi with PiFace Digital add-on board was installed.'
+echo 'Runtime modules of REXYGEN for Raspberry Pi with PiFace Digital add-on board were successfully installed.'
 echo ' '
 echo '!!! REBOOT IS REQUIRED !!!'
+echo ' '
+echo 'Afterwards you will be able to program your Raspberry Pi using REXYGEN Studio.'
+echo ' '
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "The IP address of this device is %s\n" "$_IP"
+fi
 echo ' '
 
 read -p "Is it OK to reboot now? [y/N] " -n 1 -r
 echo ' '
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sync
     reboot
 else
   echo 'Remember to reboot your Raspberry Pi at your earliest convenience.'

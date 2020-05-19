@@ -68,7 +68,11 @@ apt update
 ### temporary hack to overcome post-installation problems of owserver (OWFS) in Buster
 if [ "$DISTRO" = "Buster" ] 
 then
-    apt install -y --install-recommends owserver
+    echo "Installation in progress, please wait..."
+    apt install -y --install-recommends owserver > /dev/null 2> /dev/null
+    sed -i 's/Restart=on-failure/Restart=on-failure\nRestartSec=3/' /lib/systemd/system/owserver.service
+    systemctl daemon-reload
+    systemctl restart owserver
     dpkg --configure -a
 fi
 ### end of hack
